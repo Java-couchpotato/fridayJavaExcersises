@@ -1,73 +1,81 @@
-package telran.java_lessons;
+package string_02_02_22hw;
 
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 
+
+
+//Given the String like “20*((876/8)+19)” , implements the method that check if the parentheses are correct. Try to solve it yourself without help of Google
+//“9*(8+3)-( (9+1)5)” -> true
+//“9(8+3)- (9+1)5)” -> false
+//“98+3)-( (9+1)*5” -> false
 public class Main {
-    //Implement the previous task «check parentheses» based on the fact that brackets can be of different types: () [] {}
-
-
     public static void main(String[] args) {
-        System.out.println(isParenthesesCorrect("9*({8+3)}-( (9+1)5)")); //true
-        System.out.println(isParenthesesCorrect("9(8+3)]- (9+1)5)"));   // false
-        System.out.println(isParenthesesCorrect("98+3)-( (9]+1)*5"));   // false
-        System.out.println(isParenthesesCorrect("9 -2){}"));             // false
-        int[] array = {2, 4, -3, 7};
+        int array1[] = {10, 3, 3, 5, -9};
+        int exp1[] = {1, 4};
+        System.out.println(Arrays.toString(reverseArray(array1)));
+        System.out.println(Arrays.toString(reverseArray2(exp1)));
 
-        sort(array);
-        System.out.println(Arrays.toString(array));
-    }
-
-    public static boolean isParenthesesCorrect(String str) {
-        int parenthes = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (parenthes < 0 || parenthes % 2 != 0) {
-                return false;
-            }
-            String symbol = str.substring(i, i + 1);
-            if (symbol.equals("(") || symbol.equals("[") || symbol.equals("{")) {
-                parenthes++;
-                continue;
-            }
-            if (symbol.equals(")") || symbol.equals("]") || symbol.equals("}")) {
-                parenthes--;
-            }
-            if (parenthes == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return parenthes == 0;
-    }
-
-
-    //Implement the program that sort an array of random integers. Use the algorithm we talked about at class
-    public static void sort(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            int temp = array[i];
-            int j = i;
-            while (j > 0 && temp < array[j - 1]) {
-                array[j] = array[j - 1];
-                j--;
-            }
-            array[j] = temp;
-        }
+        String[] names = {"ivan", "vasiliy", "andrey", "konstantin", "maria"};
+        int[] ages = {2008, 2010, 2000, 1894, 1993};
+        int a = 13;
+        countAgeName(names, ages, a);
 
     }
 
-    public static int minIndex(int[] array) {
-        int min = array[0];
-        int minIndex = 0;
+    //Implement a method that returns the new array that is the given array in reverse order
+//{10, 3, 3, 5, -9} -> {-9, 5, 3, 3, 10}
+    public static int[] reverseArray(int[] array) {
+        for (int i = 0; i <= array.length / 2; i++) {
+            int b = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = b;
 
-        for (int i = 1; i < array.length; i++) {
-            if (min > array[i]) {
-                min = array[i];
-                minIndex = i;
+        }
+        return array;
+    }
+
+    //Implement a method that returns a given array in reverse order. It’s look like previous
+//but you should solve it without new array
+//{10, 3, 3, 5, -9} -> {-9, 5, 3, 3, 10}
+    public static int[] reverseArray2(int[] array) {
+        int[] newArray = new int[array.length + 1];
+        for (int i = 0; i < array.length; i++) {
+            newArray[i] = array[array.length - i - 1];
+        }
+        return array;
+    }
+    //Given arrays String[] names and int[ ] yearsOfBirthday of the same length, that contains names and years of birthday of the persons. Every element in yearsOfBirthday is corresponding with element at the same index in names. Implement the program that prints the name and the age of all person who older that given int. Than print the name and age of oldest person.
+//For example: ({“Olga”,”Oleg”,”Svetlana”,”Oleg”} , {2004,1982,2008,2010},15) ->
+//Olga 18 years
+//Oleg 40 years
+    //*******
+//Oleg 40 years is oldest
+//
+
+    public static void countAgeName(String[] names, int[] yearsOfBirth, int num) {
+        Date date = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int year = cal.get(Calendar.YEAR);
+        int max = yearsOfBirth[0];
+        int indexOfMax = 0;
+
+
+        for (int i = 0; i < yearsOfBirth.length; i++) {
+            int age = year - yearsOfBirth[i];
+
+            if (age > num) {
+                System.out.println("******" + names[i] + " " + age + " years ");
+            }
+
+            if (yearsOfBirth[i] < max) {
+                max = yearsOfBirth[i];
+                indexOfMax = i;
             }
         }
-
-        return minIndex;
+        System.out.println(names[indexOfMax] + " " + (year - yearsOfBirth[indexOfMax]) + " years");
     }
 
 }
-
