@@ -73,6 +73,15 @@ public class MapSetExercTest {
 
         assertEquals(map2,mapSetExerc.checkReplications(list));
     }
+     @Test
+    public void nameByNumberOccurence() {
+        List<String> list = Arrays.asList("Vasya", "Albina", "Vasya", "Timucin", "Albina","Vasya");
+        Map<String, Integer> map2 = new HashMap<>();
+
+
+
+        assertEquals(3,mapSetExerc.nameByNumberOccurence(list,"Vasya"));
+    }
 
 
 }
