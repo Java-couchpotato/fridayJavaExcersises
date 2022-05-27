@@ -13,7 +13,16 @@ public class MapSetExerc {
 // вхождений этого имени в список
     //public static int nameByNumberOccurence(List<String> list, String name) Vasia->3
 
-    public static int nameByNumberOccurence(List<String> list, String name) {
+     public static int nameByNumberOccurence(List<String> list, String name) {
+        Map<String, Integer> map = new HashMap<>();
+        for (String i:list) {
+            if (map.containsKey(i)) {
+                map.replace(i, map.get(i)+1);
+            }
+            else map.putIfAbsent(i,1);
+        }
+
+        return map.get(name);
 
     }
 
