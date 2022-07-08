@@ -1,18 +1,28 @@
 import bank.BankAccount;
 import bank.Person;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Collectors.*;
-
-//3. Класс Person имеет поля name and age. Написать метод, возвращающий имена тех, кто является
-// совершеннолетним в Германии (старше 17 лет). При этом метод возвращает строку приметно такого
-// содержания: in Germany Ivan and Petr are of legal age
+import java.util.stream.Stream;
 
 public class Main {
 
+    // Есть класс Person с переменными String name and int salary.
+    // Написать кастом коллектор, считающий суммарную зарплату всех людей.
+
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        Stream<Person3> persons = Stream.of(new Person3("Ivan", 4000), new Person3("Sergey", 3000), new Person3("Evgeniy", 13000));
+        Collector<Person3, List<Person3>, Integer> sumAgeCollector = new SumAgeCollector();
+
+        int sum = persons.collect(sumAgeCollector);
+        System.out.println(sum);
     }
 
     // 1.Класс BankAccount имеет поле IBAN  а класс Person имеет поле name и поле   List<BankAccount>.
@@ -39,11 +49,17 @@ public class Main {
     //2. Класс Person имеет поля name and age. Написать метод, возвращающий общий
 // возраст всех людей старше 17 лет. (2 способа)
 
-    public static int findSumOfAges (List<Person2>persons){
+    public static int findSumOfAges(List<Person2> persons) {
         return persons.stream()
-                .filter(age->age.getAge()>17)
+                .filter(age -> age.getAge() > 17)
                 .collect(Collectors.summingInt(Person2::getAge));
     }
+
+
+//3. Класс Person имеет поля name and age. Написать метод, возвращающий имена тех, кто является
+// совершеннолетним в Германии (старше 17 лет). При этом метод возвращает строку приметно такого
+// содержания: in Germany Ivan and Petr are of legal age
+
 
 
 }
