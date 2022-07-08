@@ -1,5 +1,6 @@
 import bank.BankAccount;
 import bank.Person;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,5 +39,11 @@ class MainTest {
         List<String> exp = Arrays.asList("DE6**********", "DE5**********", "DE7**********", "DE6**********", "DE5**********", "DE7**********", "DE6**********", "DE5**********", "DE7**********");
 
         assertEquals(exp, main.returnStars(persons));
+    }
+    @Test
+    void findSumOfAges(){
+        List<Person2>list = Arrays.asList(new Person2("Ivan",56),new Person2("Andrei",5),new Person2("Masha",17));
+        int exp = 56;
+        assertEquals(56,main.findSumOfAges(list));
     }
 }

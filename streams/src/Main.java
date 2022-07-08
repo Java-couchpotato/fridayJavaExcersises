@@ -1,7 +1,9 @@
+import bank.BankAccount;
 import bank.Person;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Collectors.*;
 
 //3. Класс Person имеет поля name and age. Написать метод, возвращающий имена тех, кто является
 // совершеннолетним в Германии (старше 17 лет). При этом метод возвращает строку приметно такого
@@ -29,15 +31,19 @@ public class Main {
     public static List<String> returnStars(List<Person> persons) {
         return persons.stream()
                 .flatMap(person -> person.getAccounts().stream())
-                .map(ac -> ac.getIBAN())
-                .map(iban -> replaceStars(iban))
+                .map(BankAccount::getIBAN)
+                .map(Main::replaceStars)
                 .collect(Collectors.toList());
     }
 
     //2. Класс Person имеет поля name and age. Написать метод, возвращающий общий
 // возраст всех людей старше 17 лет. (2 способа)
 
-    public static
+    public static int findSumOfAges (List<Person2>persons){
+        return persons.stream()
+                .filter(age->age.getAge()>17)
+                .collect(Collectors.summingInt(Person2::getAge));
+    }
 
 
 }
