@@ -1,3 +1,5 @@
+package string_02_02_22hw.streams.src;
+
 public class Person3 {
 
     private String name;

@@ -1,13 +1,7 @@
 import bank.BankAccount;
 import bank.Person;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.BinaryOperator;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,8 +12,8 @@ public class Main {
     // Написать кастом коллектор, считающий суммарную зарплату всех людей.
 
     public static void main(String[] args) {
-        Stream<Person3> persons = Stream.of(new Person3("Ivan", 4000), new Person3("Sergey", 3000), new Person3("Evgeniy", 13000));
-        Collector<Person3, List<Person3>, Integer> sumAgeCollector = new SumAgeCollector();
+        Stream<string_02_02_22hw.streams.src.Person3> persons = Stream.of(new string_02_02_22hw.streams.src.Person3("Ivan", 4000), new string_02_02_22hw.streams.src.Person3("Sergey", 3000), new string_02_02_22hw.streams.src.Person3("Evgeniy", 13000));
+        Collector<string_02_02_22hw.streams.src.Person3, List<string_02_02_22hw.streams.src.Person3>, Integer> sumAgeCollector = new SumAgeCollector();
 
         int sum = persons.collect(sumAgeCollector);
         System.out.println(sum);

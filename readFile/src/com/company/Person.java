@@ -1,4 +1,4 @@
-package com.company;
+package string_02_02_22hw.readFile.src.com.company;
 
 public class Person {
     String name;

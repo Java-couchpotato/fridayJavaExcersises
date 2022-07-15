@@ -1,3 +1,7 @@
+package string_02_02_22hw.Streams_2022_07_01.src;
+
+import string_02_02_22hw.Streams_2022_07_01.src.Address;
+
 public class Persons {
     String name;
     int age;

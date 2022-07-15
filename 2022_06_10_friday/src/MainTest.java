@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MainTest {
-    Main mt = new Main();
+    Main2 mt = new Main2();
 
     @Test
     public void multiple() {

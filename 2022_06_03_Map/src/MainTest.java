@@ -1,4 +1,3 @@
-import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
@@ -8,11 +7,11 @@ import static org.junit.Assert.assertEquals;
 
 class MainTest {
     List<String> actual;
-    private Main main;
+    private Main2 main;
 
     @BeforeEach
     public void init() {
-        main = new Main();
+        main = new Main2();
         actual = new ArrayList<>();
         actual.add("ivan");
         actual.add("mara");

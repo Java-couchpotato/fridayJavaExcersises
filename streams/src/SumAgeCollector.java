@@ -1,3 +1,5 @@
+import string_02_02_22hw.streams.src.Person3;
+
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;

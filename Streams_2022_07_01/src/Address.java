@@ -1,3 +1,5 @@
+package string_02_02_22hw.Streams_2022_07_01.src;
+
 public class Address {
     String street;
     int houseNum;
